@@ -1,0 +1,15 @@
+version: "3"
+services:
+  app:
+    build: .
+    ports:
+      - 8080:8080
+    depends_on: 
+      - db
+    restart: on-failure
+    environment:
+      DB_HOST: db
+      DB_PORT: 27017
+  db:
+    image: mongo:4.0
+    restart: always
